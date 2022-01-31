@@ -6,12 +6,14 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
 public class SpotifyInterface {
 	
 	private String baseUrl = "https://api.spotify.com/v1/";
 	private HttpClient client = HttpClient.newHttpClient();
+	private ObjectMapper mapper = new ObjectMapper();
 	
 	public TrackAnalysisResponse AnalyseTrack(String trackId) throws IOException, InterruptedException
 	{
@@ -20,7 +22,7 @@ public class SpotifyInterface {
 										 .uri(URI.create(endpoint))
 										 .build();
 		
-		HttpResponse<TrackAnalysisResponse> response;
+		HttpResponse<String> response;
 		try {
 			response = client.send(request, null);
 		} catch (IOException e) {
@@ -30,7 +32,8 @@ public class SpotifyInterface {
 			e.printStackTrace();
 			throw e;
 		}
+		TrackAnalysisResponse analysis = mapper.readValue(response.body(), TrackAnalysisResponse.class);
 		
-		return response.body();
+		return analysis;
 	}
 }
