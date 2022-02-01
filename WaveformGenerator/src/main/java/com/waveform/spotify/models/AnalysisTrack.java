@@ -1,3 +1,10 @@
+/*
+ * AnalysisTrack
+ * 
+ * v1.0.0
+ *
+ * 31/01/2022
+ */
 package com.waveform.spotify.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -33,6 +40,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "rhythmstring",
   "rhythm_version"
 })
+/*
+ * 
+ *	 The AnalysisTrack class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis API.
+ *	 
+ *	 This class provides general information on the track which has been analysed.
+ * 
+ *	 @author    Jake Howden
+ */
 public class AnalysisTrack {
 
   @JsonProperty("num_samples")

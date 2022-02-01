@@ -1,3 +1,10 @@
+/*
+ * AnalysisSegment
+ * 
+ * v1.0.0
+ *
+ * 31/01/2022
+ */
 package com.waveform.spotify.models;
 
 import java.util.List;
@@ -17,6 +24,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "pitches",
   "timbre"
 })
+/*
+ * 
+ *	 The AnalysisSegment class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis API.
+ *	 
+ *	 A segment details loudness and pitch throughout a certain segment of the song.
+ * 
+ *	 @author    Jake Howden
+ */
 public class AnalysisSegment {
 
   @JsonProperty("start")

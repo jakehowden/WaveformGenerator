@@ -1,3 +1,10 @@
+/*
+ * AnalysisBar
+ * 
+ * v1.0.0
+ *
+ * 31/01/2022
+ */
 package com.waveform.spotify.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,6 +17,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "duration",
   "confidence"
 })
+/*
+ * 
+ *	 The AnalysisBar class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis API.
+ *	 
+ *	 A bar (or measure) is a segment of time defined as a given number of beats.
+ * 
+ *	 @author    Jake Howden
+ */
 public class AnalysisBar {
 
   @JsonProperty("start")

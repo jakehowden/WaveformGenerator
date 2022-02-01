@@ -1,3 +1,10 @@
+/*
+ * AnalysisSection
+ * 
+ * v1.0.0
+ *
+ * 31/01/2022
+ */
 package com.waveform.spotify.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,6 +26,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "time_signature",
   "time_signature_confidence"
 })
+/*
+ * 
+ *	 The AnalysisSection class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis API.
+ *	 
+ *	 A section is defined by large variations in rhythm or timbre, e.g. chorus, verse, bridge, guitar solo, etc. 
+ *   A section also contains its own descriptions of tempo, key, mode, time_signature, and loudness.
+ * 
+ *	 @author    Jake Howden
+ */
 public class AnalysisSection {
 
   @JsonProperty("start")
