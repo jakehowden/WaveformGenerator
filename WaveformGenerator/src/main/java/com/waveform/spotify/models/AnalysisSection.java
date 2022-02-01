@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "time_signature",
   "time_signature_confidence"
 })
-/*
+/**
  * 
  *	 The AnalysisSection class is a model used in the deserialization
  *	 of a response from the Spotify track analysis API.

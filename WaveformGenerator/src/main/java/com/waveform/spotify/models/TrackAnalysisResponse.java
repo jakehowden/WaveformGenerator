@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "segments",
 "tatums"
 })
-/*
+/**
  * 
  *	 The TrackAnalysisResponse class is the response model used 
  *	 when querying the Spotify track analysis API.

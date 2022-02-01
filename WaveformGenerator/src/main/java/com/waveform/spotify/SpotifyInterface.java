@@ -16,7 +16,7 @@ import java.net.http.HttpResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
-/*
+/**
  * 
  *	 The SpotifyInterface class provides definitions for all methods 
  *	 defined in the ISpotifyInterface interface.

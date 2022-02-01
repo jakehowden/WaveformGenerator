@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "rhythmstring",
   "rhythm_version"
 })
-/*
+/**
  * 
  *	 The AnalysisTrack class is a model used in the deserialization
  *	 of a response from the Spotify track analysis API.
