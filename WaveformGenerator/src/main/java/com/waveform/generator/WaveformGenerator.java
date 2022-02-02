@@ -7,9 +7,13 @@
  */
 package com.waveform.generator;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import com.waveform.spotify.models.AnalysisSegment;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
@@ -24,7 +28,9 @@ import com.waveform.spotify.models.TrackAnalysisResponse;
  */
 public class WaveformGenerator {
 	
-	public void Generate (TrackAnalysisResponse analysis) {
+	private String SpotifyGreen = "#1DB954";
+	
+	public BufferedImage Generate (TrackAnalysisResponse analysis) {
 		
 		double trackDuration = analysis.getTrack().getDuration();
 		
@@ -48,7 +54,33 @@ public class WaveformGenerator {
 			}
 		}
 		
+		return drawImage(levels);
+	}
+	
+	/**
+	*  Draws a waveform image from the given sound levels.
+	*
+	* @param  levels - the varying noise levels of the track.
+	* @return BufferedImage - representing the tracks waveform.
+	*/
+	private BufferedImage drawImage(List<Long> levels) {
+		BufferedImage img = new BufferedImage(200, 50, 1);
+		Graphics2D graphics = img.createGraphics();
 		
+		// Fill background
+		graphics.setColor(Color.decode(SpotifyGreen));
+		graphics.fillRect(0, 0, img.getWidth(), img.getHeight());
+		
+		// Draw Waves
+		graphics.setColor(Color.white);
+		for(int i = 0; i < img.getWidth(); i++) {
+			if(i % 8 == 0) { // space out waves
+				
+			}
+		}
+		
+		graphics.dispose();
+		return img;
 	}
 	
 }
