@@ -9,9 +9,7 @@ package com.waveform.generator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.Segment;
-
+import java.util.Optional;
 import com.waveform.spotify.models.AnalysisSegment;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
@@ -37,6 +35,17 @@ public class WaveformGenerator {
 					s.getStart(), 
 					s.getDuration(), 
 					s.getLoudnessMax()));
+		}
+		
+		List<Long> levels = new ArrayList<>();
+		for(double i = 0.000; i < segments.size(); i += 0.001) {
+			double threshold = i;
+			Optional<SimpleSegment> s = segments.stream().filter((segment) -> threshold < segment.getStart() + segment.getDuration()).findFirst();
+			
+			if(s.isPresent()) {
+				long loudness = Math.round((s.get().getLoudness() / 2) * 100) / 100;
+				levels.add(loudness);
+			}
 		}
 		
 		

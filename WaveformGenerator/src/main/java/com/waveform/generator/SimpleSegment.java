@@ -30,8 +30,24 @@ public class SimpleSegment {
 	* @param  loudness - the overall loudness in decibels (dB) of the segment.
 	*/
 	public SimpleSegment(double trackDuration, double start, double duration, double loudness) {
+		/* 
+		* Instead of having the value in seconds, divide by duration 
+		* to give a value between 0 and 1.
+		* 
+		* Gives a clearer understanding of at what point 
+		* this segment occurs in the song.
+		*/ 
 		this.start = this.start / trackDuration;
 		this.duration = this.duration / trackDuration;
+		
+		/* 
+		* In a similar fashion we want to make sure the value is between 0 and 1.
+		* 
+		* The loudness can be from 0dB to -60dB, however Spotify tracks 
+		* rarely go below -35dB hence why this caps the loudness at -35dB.
+		* 
+		* This gives us a better idea of how loud this segment is at this time.
+		*/ 
 		this.loudness = 1 - (Math.min(Math.max(loudness, -35), 0) / -35);
 	}
 	
