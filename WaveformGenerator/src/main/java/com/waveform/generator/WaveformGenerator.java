@@ -30,6 +30,12 @@ public class WaveformGenerator {
 	
 	private String SpotifyGreen = "#1DB954";
 	
+	/**
+	*  Generates a waveform image from the analysis of a Spotify track.
+	*
+	* @param  analysis - response from the Spotify track analysis API.
+	* @return BufferedImage - representing the tracks waveform.
+	*/
 	public BufferedImage Generate (TrackAnalysisResponse analysis) {
 		
 		double trackDuration = analysis.getTrack().getDuration();
@@ -64,7 +70,9 @@ public class WaveformGenerator {
 	* @return BufferedImage - representing the tracks waveform.
 	*/
 	private BufferedImage drawImage(List<Long> levels) {
-		BufferedImage img = new BufferedImage(200, 50, 1);
+		int width = 200;
+		int height = 50;
+		BufferedImage img = new BufferedImage(width, height, 1);
 		Graphics2D graphics = img.createGraphics();
 		
 		// Fill background
@@ -73,9 +81,15 @@ public class WaveformGenerator {
 		
 		// Draw Waves
 		graphics.setColor(Color.white);
-		for(int i = 0; i < img.getWidth(); i++) {
-			if(i % 8 == 0) { // space out waves
+		for(int i = 0; i < width; i++) {
+			// Draw a 4 pixel wide rectangle every 8 pixels
+			if(i % 8 == 0) {
+				int j = (int) Math.ceil(levels.size() * (i / width));
+				var h = Math.round(levels.get(j) * height) / 2;
 				
+				// Mirror the rectangles, they now extend from the middle up and down.
+				graphics.drawRect(i, (height / 2) - h, 4, h);
+				graphics.drawRect(i, (height / 2), 4, h);
 			}
 		}
 		
