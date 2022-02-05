@@ -49,13 +49,13 @@ public class WaveformGenerator {
 					s.getLoudnessMax()));
 		}
 		
-		List<Long> levels = new ArrayList<>();
+		List<Double> levels = new ArrayList<>();
 		for(double i = 0.000; i < segments.size(); i += 0.001) {
 			double threshold = i;
-			Optional<SimpleSegment> s = segments.stream().filter((segment) -> threshold < segment.getStart() + segment.getDuration()).findFirst();
+			Optional<SimpleSegment> s = segments.stream().filter((segment) -> threshold <= segment.getStart() + segment.getDuration()).findFirst();
 			
 			if(s.isPresent()) {
-				long loudness = Math.round((s.get().getLoudness() / 2) * 100) / 100;
+				double loudness = ((double)Math.round((s.get().getLoudness() / 2) * 100)) / 100;
 				levels.add(loudness);
 			}
 		}
@@ -69,9 +69,9 @@ public class WaveformGenerator {
 	* @param  levels - the varying noise levels of the track.
 	* @return BufferedImage - representing the tracks waveform.
 	*/
-	private BufferedImage drawImage(List<Long> levels) {
-		int width = 200;
-		int height = 50;
+	private BufferedImage drawImage(List<Double> levels) {
+		int width = 1920;
+		int height = 1080;
 		BufferedImage img = new BufferedImage(width, height, 1);
 		Graphics2D graphics = img.createGraphics();
 		
@@ -84,12 +84,15 @@ public class WaveformGenerator {
 		for(int i = 0; i < width; i++) {
 			// Draw a 4 pixel wide rectangle every 8 pixels
 			if(i % 8 == 0) {
-				int j = (int) Math.ceil(levels.size() * (i / width));
-				var h = Math.round(levels.get(j) * height) / 2;
+				double where = (double) i / width;
+				int j = (int) Math.ceil(levels.size() * where);
+				int h = (int) Math.round(levels.get(j) * height) / 2;
 				
 				// Mirror the rectangles, they now extend from the middle up and down.
 				graphics.drawRect(i, (height / 2) - h, 4, h);
+				graphics.fillRect(i, (height / 2) - h, 4, h);
 				graphics.drawRect(i, (height / 2), 4, h);
+				graphics.fillRect(i, (height / 2), 4, h);
 			}
 		}
 		

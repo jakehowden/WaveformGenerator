@@ -37,8 +37,8 @@ public class SimpleSegment {
 		* Gives a clearer understanding of at what point 
 		* this segment occurs in the song.
 		*/ 
-		this.start = this.start / trackDuration;
-		this.duration = this.duration / trackDuration;
+		this.start = start / trackDuration;
+		this.duration = duration / trackDuration;
 		
 		/* 
 		* In a similar fashion we want to make sure the value is between 0 and 1.
