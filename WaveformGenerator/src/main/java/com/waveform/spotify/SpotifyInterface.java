@@ -71,7 +71,7 @@ public class SpotifyInterface {
 		}
 	}
 	
-	public void refreshAccessToken() throws IOException, InterruptedException {
+	public void refreshAccessToken() throws IOException, InterruptedException, BadRequestException {
 		String endpoint = accountsBase + "api/token/";
 		String authHeader = Base64.getEncoder()
 				.encodeToString((auth.getClientId() + ":" + auth.getClientSecret()).getBytes());

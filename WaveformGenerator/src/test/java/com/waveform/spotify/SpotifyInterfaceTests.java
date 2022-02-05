@@ -34,13 +34,9 @@ public class SpotifyInterfaceTests {
 		TrackAnalysisResponse response;
 		try {
 			response = spotify.analyseTrack(trackId);
-		} catch (IOException e) {
-			throw e;
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (IOException | InterruptedException e) {
 			throw e;
 		} catch (BadRequestException e) {
-			e.printStackTrace();
 			throw e;
 		}
 		
@@ -49,18 +45,27 @@ public class SpotifyInterfaceTests {
 	}
 	
 	@Test
-	public void TestAnalyseTrackInvalidTrackId() throws IOException, InterruptedException, BadRequestException {
+	public void TestAnalyseTrackInvalidTrackId() throws IOException, InterruptedException {
 		String trackId = "thisisnotavalidtrack";
 		boolean OK = false;
 		try {
 			spotify.analyseTrack(trackId);
-		} catch (IOException e) {
-			throw e;
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (IOException | InterruptedException e) {
 			throw e;
 		} catch (BadRequestException e) {
 			OK = true;
+		}
+		
+		assertTrue(OK);
+	}
+	
+	@Test
+	public void TestRefreshAccessToken() {
+		boolean OK = true;
+		try {
+			spotify.refreshAccessToken();
+		} catch (IOException | InterruptedException | BadRequestException e) {
+			OK = false;
 		}
 		
 		assertTrue(OK);
