@@ -24,8 +24,3 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file WaveformGenerator/pom.xml
-      env:
-        SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-        SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-        SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-      
