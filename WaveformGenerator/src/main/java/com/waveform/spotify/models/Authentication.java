@@ -59,4 +59,11 @@ public class Authentication {
 	public String getClientSecret() {
 		return clientSecret;
 	}
+	
+	public String getFormData(String grantType) {
+		return "grant_type=" + grantType + 
+				"&" + "refresh_token=" + refreshToken + 
+				"&" + "client_id=" + clientId + 
+				"&" + "client_secret=" + clientSecret;
+	}
 }

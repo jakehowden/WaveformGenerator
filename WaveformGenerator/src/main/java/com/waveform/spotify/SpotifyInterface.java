@@ -14,7 +14,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Instant;
-import java.util.Base64;
 
 import org.springframework.http.HttpStatus;
 
@@ -22,7 +21,6 @@ import javax.ws.rs.BadRequestException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.Authentication;
-import com.waveform.spotify.models.OAuthRequest;
 import com.waveform.spotify.models.OAuthResponse;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
@@ -51,7 +49,7 @@ public class SpotifyInterface {
 		String endpoint = apiBase + "audio-analysis/" + trackId;
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(endpoint))
-				.header("Authorization", auth.getToken())
+				.header("Authorization", "Bearer " + auth.getToken())
 				.GET()
 				.build();
 		
@@ -74,14 +72,11 @@ public class SpotifyInterface {
 	
 	public void refreshAccessToken() throws IOException, InterruptedException, BadRequestException {
 		String endpoint = accountsBase + "api/token/";
-		String authHeader = Base64.getEncoder()
-				.encodeToString((auth.getClientId() + ":" + auth.getClientSecret()).getBytes());
-		String body = mapper.writeValueAsString(new OAuthRequest(auth.getRefreshToken()));
+		String body = auth.getFormData("refresh_token");
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(endpoint))
-				.header("Authorization", "Basic" + authHeader)
 				.header("Content-Type", "application/x-www-form-urlencoded")
-				.POST(HttpRequest.BodyPublishers.ofString(body))
+				.POST(HttpRequest.BodyPublishers.ofByteArray(body.getBytes()))
 				.build();
 		
 		HttpResponse<String> response;
