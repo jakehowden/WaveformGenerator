@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 
+import javax.ws.rs.BadRequestException;
+
 import org.junit.jupiter.api.Test;
 
 import com.waveform.spotify.models.TrackAnalysisResponse;
@@ -27,7 +29,7 @@ public class SpotifyInterfaceTests {
 	SpotifyInterface spotify = new SpotifyInterface();
 	
 	@Test
-	public void TestAnalyseTrack() throws IOException, InterruptedException, Exception {
+	public void TestAnalyseTrack() throws IOException, InterruptedException, BadRequestException {
 		String trackId = "11dFghVXANMlKmJXsNCbNl";
 		TrackAnalysisResponse response;
 		try {
@@ -37,7 +39,7 @@ public class SpotifyInterfaceTests {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			throw e;
-		} catch (Exception e) {
+		} catch (BadRequestException e) {
 			e.printStackTrace();
 			throw e;
 		}
@@ -47,17 +49,17 @@ public class SpotifyInterfaceTests {
 	}
 	
 	@Test
-	public void TestAnalyseTrackInvalidTrackId() throws IOException, InterruptedException, Exception {
+	public void TestAnalyseTrackInvalidTrackId() throws IOException, InterruptedException, BadRequestException {
 		String trackId = "thisisnotavalidtrack";
 		boolean OK = false;
 		try {
-			TrackAnalysisResponse response = spotify.analyseTrack(trackId);
+			spotify.analyseTrack(trackId);
 		} catch (IOException e) {
 			throw e;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			throw e;
-		} catch (Exception e) {
+		} catch (BadRequestException e) {
 			OK = true;
 		}
 		
