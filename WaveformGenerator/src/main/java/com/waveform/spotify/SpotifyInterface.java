@@ -73,6 +73,7 @@ public class SpotifyInterface {
 	public void refreshAccessToken() throws IOException, InterruptedException, BadRequestException {
 		String endpoint = accountsBase + "api/token/";
 		String body = auth.getFormData("refresh_token");
+		System.out.println("BODY: " + body);
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(endpoint))
 				.header("Content-Type", "application/x-www-form-urlencoded")
