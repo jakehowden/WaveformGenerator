@@ -1,11 +1,11 @@
 /*
- * AnalysisBar
+ * AnalysisTatum
  * 
  * v1.0.0
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,14 +19,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 /**
  * 
- *	 The AnalysisBar class is a model used in the deserialization
+ *	 The AnalysisTatum class is a model used in the deserialization
  *	 of a response from the Spotify track analysis API.
  *	 
- *	 A bar (or measure) is a segment of time defined as a given number of beats.
+ *	 A tatum represents the lowest regular pulse train that a listener intuitively 
+ *	 infers from the timing of perceived musical events (segments).
  * 
  *	 @author    Jake Howden
  */
-public class AnalysisBar {
+public class AnalysisTatum {
 
   @JsonProperty("start")
   private Double start;
@@ -64,5 +65,5 @@ public class AnalysisBar {
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
   }
-
+  
 }

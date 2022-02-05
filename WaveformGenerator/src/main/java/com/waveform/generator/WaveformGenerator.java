@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.waveform.spotify.models.AnalysisSegment;
-import com.waveform.spotify.models.TrackAnalysisResponse;
+import com.waveform.spotify.models.analysis.AnalysisSegment;
+import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
 
 /**
  * 

@@ -18,7 +18,7 @@ import javax.ws.rs.BadRequestException;
 
 import org.junit.jupiter.api.Test;
 
-import com.waveform.spotify.models.TrackAnalysisResponse;
+import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
 
 /**
  * Unit tests for Spotify Interface.

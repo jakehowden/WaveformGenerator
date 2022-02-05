@@ -22,7 +22,7 @@ import javax.ws.rs.BadRequestException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.Authentication;
 import com.waveform.spotify.models.OAuthResponse;
-import com.waveform.spotify.models.TrackAnalysisResponse;
+import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
 
 /**
  * 

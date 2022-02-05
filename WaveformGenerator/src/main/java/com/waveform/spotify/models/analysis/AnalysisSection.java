@@ -5,7 +5,7 @@
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
