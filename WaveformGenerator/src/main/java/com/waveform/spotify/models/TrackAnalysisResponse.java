@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The TrackAnalysisResponse class is the response model used 
- *	 when querying the Spotify track analysis API.
+ *	 when querying the Spotify track analysis endpoint.
  *
  *	 @author    Jake Howden
  */
