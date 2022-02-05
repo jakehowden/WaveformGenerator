@@ -7,9 +7,10 @@
  */
 package com.waveform.spotify;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 
@@ -45,29 +46,18 @@ public class SpotifyInterfaceTests {
 	}
 	
 	@Test
-	public void TestAnalyseTrackInvalidTrackId() throws IOException, InterruptedException {
+	public void TestAnalyseTrackInvalidTrackId() {
 		String trackId = "thisisnotavalidtrack";
-		boolean OK = false;
-		try {
-			spotify.analyseTrack(trackId);
-		} catch (IOException | InterruptedException e) {
-			throw e;
-		} catch (BadRequestException e) {
-			OK = true;
-		}
 		
-		assertTrue(OK);
+		assertThrows(BadRequestException.class, () -> {
+			spotify.analyseTrack(trackId);
+		});
 	}
 	
 	@Test
 	public void TestRefreshAccessToken() {
-		boolean OK = true;
-		try {
+		assertDoesNotThrow(() -> {
 			spotify.refreshAccessToken();
-		} catch (IOException | InterruptedException | BadRequestException e) {
-			OK = false;
-		}
-		
-		assertTrue(OK);
+		});
 	}
 }

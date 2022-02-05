@@ -22,6 +22,7 @@ import javax.ws.rs.BadRequestException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.Authentication;
+import com.waveform.spotify.models.OAuthRequest;
 import com.waveform.spotify.models.OAuthResponse;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
@@ -75,12 +76,12 @@ public class SpotifyInterface {
 		String endpoint = accountsBase + "api/token/";
 		String authHeader = Base64.getEncoder()
 				.encodeToString((auth.getClientId() + ":" + auth.getClientSecret()).getBytes());
-		var body = HttpRequest.BodyPublishers.ofString(authHeader);
+		String body = mapper.writeValueAsString(new OAuthRequest(auth.getRefreshToken()));
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(endpoint))
 				.header("Authorization", "Basic" + authHeader)
 				.header("Content-Type", "application/x-www-form-urlencoded")
-				.POST(body)
+				.POST(HttpRequest.BodyPublishers.ofString(body))
 				.build();
 		
 		HttpResponse<String> response;
