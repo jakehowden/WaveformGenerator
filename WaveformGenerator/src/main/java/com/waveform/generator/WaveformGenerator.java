@@ -88,7 +88,7 @@ public class WaveformGenerator {
 				int j = (int) Math.ceil(levels.size() * where);
 				int h = (int) Math.round(levels.get(j) * height) / 2;
 				
-				// Mirror the rectangles, they now extend from the middle up and down.
+				// Mirror the rectangles, extend them from the middle up and down.
 				graphics.drawRect(i, (height / 2) - h, 4, h);
 				graphics.fillRect(i, (height / 2) - h, 4, h);
 				graphics.drawRect(i, (height / 2), 4, h);

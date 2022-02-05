@@ -37,11 +37,8 @@ public class WaveformGeneratorTests {
 			throw e;
 		}
 		
-		/*assertDoesNotThrow(() -> { 
+		assertDoesNotThrow(() -> { 
 			generator.Generate(analysis);
-		});*/
-		var img = generator.Generate(analysis);
-		File outputfile = new File("src/test/json/image.jpg");
-		ImageIO.write(img, "jpg", outputfile);
+		});
 	}
 }
