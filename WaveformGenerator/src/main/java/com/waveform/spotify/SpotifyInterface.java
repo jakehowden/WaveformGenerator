@@ -65,15 +65,13 @@ public class SpotifyInterface {
 			TrackAnalysisResponse analysis = mapper.readValue(response.body(), TrackAnalysisResponse.class);
 			return analysis;
 		} else {
-			var e = new BadRequestException("Status Code: " + response.statusCode() + ". Body: " + response.body());
-			throw e;
+			throw new BadRequestException("Status Code: " + response.statusCode() + ". Body: " + response.body());
 		}
 	}
 	
 	public void refreshAccessToken() throws IOException, InterruptedException, BadRequestException {
 		String endpoint = accountsBase + "api/token/";
 		String body = auth.getFormData("refresh_token");
-		System.out.println("BODY: " + body);
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(endpoint))
 				.header("Content-Type", "application/x-www-form-urlencoded")
@@ -94,8 +92,7 @@ public class SpotifyInterface {
 			// add expires in seconds to current Epoch seconds
 			auth.setExpiry((Instant.now().getEpochSecond() + oAuth.getExpiresIn())); 
 		} else {
-			var e = new BadRequestException("Status Code: " + response.statusCode() + ". Body: " + response.body());
-			throw e;
+			throw new BadRequestException("Status Code: " + response.statusCode() + ". Body: " + response.body());
 		}
 	}
 }
