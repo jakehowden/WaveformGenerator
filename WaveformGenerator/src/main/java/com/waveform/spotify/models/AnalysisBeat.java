@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "duration",
   "confidence"
 })
-/*
+/**
  * 
  *	 The AnalysisBeat class is a model used in the deserialization
  *	 of a response from the Spotify track analysis API.

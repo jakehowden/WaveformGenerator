@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "pitches",
   "timbre"
 })
-/*
+/**
  * 
  *	 The AnalysisSegment class is a model used in the deserialization
  *	 of a response from the Spotify track analysis API.

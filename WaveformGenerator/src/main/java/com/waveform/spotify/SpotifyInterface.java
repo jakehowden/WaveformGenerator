@@ -24,7 +24,7 @@ import com.waveform.spotify.models.Authentication;
 import com.waveform.spotify.models.OAuthResponse;
 import com.waveform.spotify.models.TrackAnalysisResponse;
 
-/*
+/**
  * 
  *	 The SpotifyInterface class provides definitions for all methods 
  *	 defined in the ISpotifyInterface interface.
