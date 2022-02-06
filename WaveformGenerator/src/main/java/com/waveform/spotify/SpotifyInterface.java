@@ -9,10 +9,12 @@ package com.waveform.spotify;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,8 @@ import javax.ws.rs.BadRequestException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waveform.spotify.models.Authentication;
 import com.waveform.spotify.models.OAuthResponse;
-import com.waveform.spotify.models.TrackAnalysisResponse;
+import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
+import com.waveform.spotify.models.search.SearchResponse;
 
 /**
  * 
@@ -38,6 +41,39 @@ public class SpotifyInterface {
 	private Authentication auth = new Authentication();
 	private HttpClient client = HttpClient.newHttpClient();
 	private ObjectMapper mapper = new ObjectMapper();
+	
+	public SearchResponse Search(String queryString) throws IOException, InterruptedException, BadRequestException {
+		if(auth.getToken() == null || auth.getExpiry() < Instant.now().getEpochSecond()) {
+			// access Token is null or expired
+			refreshAccessToken();
+		}
+		
+		String endpoint = apiBase + "search?" 
+				+ "q=" + URLEncoder.encode(queryString, StandardCharsets.UTF_8)
+				+ "&type=track"
+				+ "&market=GB"
+				+ "&limit=25";
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(endpoint))
+				.header("Authorization", "Bearer " + auth.getToken())
+				.GET()
+				.build();
+		
+		HttpResponse<String> response;
+		try {
+			response = client.send(request, BodyHandlers.ofString());
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		if(HttpStatus.valueOf(response.statusCode()).is2xxSuccessful()) {
+			SearchResponse search = mapper.readValue(response.body(), SearchResponse.class);
+			return search;
+		} else {
+			throw new BadRequestException("Status Code: " + response.statusCode() + ". Body: " + response.body());
+		}
+	}
 	
 	public TrackAnalysisResponse analyseTrack(String trackId) throws IOException, InterruptedException, BadRequestException {
 		

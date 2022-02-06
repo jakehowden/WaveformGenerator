@@ -1,11 +1,11 @@
 /*
- * AnalysisBeat
+ * AnalysisTatum
  * 
  * v1.0.0
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,15 +19,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 /**
  * 
- *	 The AnalysisBeat class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 The AnalysisTatum class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
- *	 A beat is the basic time unit of a piece of music; for example, each tick of a metronome. 
- *   Beats are typically multiples of tatums.
+ *	 A tatum represents the lowest regular pulse train that a listener intuitively 
+ *	 infers from the timing of perceived musical events (segments).
  * 
  *	 @author    Jake Howden
  */
-public class AnalysisBeat {
+public class AnalysisTatum {
 
   @JsonProperty("start")
   private Double start;
@@ -35,7 +35,7 @@ public class AnalysisBeat {
   private Double duration;
   @JsonProperty("confidence")
   private Double confidence;
-  
+
   @JsonProperty("start")
   public Double getStart() {
     return start;
@@ -65,5 +65,5 @@ public class AnalysisBeat {
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
   }
-
+  
 }

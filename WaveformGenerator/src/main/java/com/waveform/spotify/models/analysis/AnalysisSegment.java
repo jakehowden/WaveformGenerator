@@ -5,7 +5,7 @@
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The AnalysisSegment class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
  *	 A segment details loudness and pitch throughout a certain segment of the song.
  * 

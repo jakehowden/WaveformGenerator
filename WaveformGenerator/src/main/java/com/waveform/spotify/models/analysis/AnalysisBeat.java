@@ -1,11 +1,11 @@
 /*
- * AnalysisBar
+ * AnalysisBeat
  * 
  * v1.0.0
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,14 +19,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 /**
  * 
- *	 The AnalysisBar class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 The AnalysisBeat class is a model used in the deserialization
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
- *	 A bar (or measure) is a segment of time defined as a given number of beats.
+ *	 A beat is the basic time unit of a piece of music; for example, each tick of a metronome. 
+ *   Beats are typically multiples of tatums.
  * 
  *	 @author    Jake Howden
  */
-public class AnalysisBar {
+public class AnalysisBeat {
 
   @JsonProperty("start")
   private Double start;
@@ -34,7 +35,7 @@ public class AnalysisBar {
   private Double duration;
   @JsonProperty("confidence")
   private Double confidence;
-
+  
   @JsonProperty("start")
   public Double getStart() {
     return start;

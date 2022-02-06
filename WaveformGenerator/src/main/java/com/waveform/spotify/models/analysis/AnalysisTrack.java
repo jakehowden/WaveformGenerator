@@ -5,7 +5,7 @@
  *
  * 31/01/2022
  */
-package com.waveform.spotify.models;
+package com.waveform.spotify.models.analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The AnalysisTrack class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
  *	 This class provides general information on the track which has been analysed.
  * 
