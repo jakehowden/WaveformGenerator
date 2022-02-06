@@ -1,12 +1,15 @@
+/*
+ * Tracks
+ * 
+ * v1.0.0
+ *
+ * 05/02/2022
+ */
 package com.waveform.spotify.models.search;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -21,12 +24,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "previous",
   "total"
 })
-public class Track {
+/**
+ * 
+ *	 The Tracks class is a model used in the deserialization
+ *	 of a response from the Spotify search endpoint.
+ *
+ *	 @author    Jake Howden
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Tracks {
 
   @JsonProperty("href")
   private String href;
   @JsonProperty("items")
-  private List < Item > items = null;
+  private List<SearchItem> items = null;
   @JsonProperty("limit")
   private Integer limit;
   @JsonProperty("next")
@@ -49,12 +60,12 @@ public class Track {
   }
 
   @JsonProperty("items")
-  public List < Item > getItems() {
+  public List<SearchItem> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List < Item > items) {
+  public void setItems(List<SearchItem> items) {
     this.items = items;
   }
 
