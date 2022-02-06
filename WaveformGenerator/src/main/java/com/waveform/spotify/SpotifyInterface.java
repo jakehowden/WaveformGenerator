@@ -29,12 +29,12 @@ import com.waveform.spotify.models.search.SearchResponse;
 
 /**
  * 
- *	 The SpotifyInterface class provides definitions for all methods 
+ *	 The SpotifyInterface class provides implementations of the methods 
  *	 defined in the ISpotifyInterface interface.
  * 
  *	 @author    Jake Howden
  */
-public class SpotifyInterface {
+public class SpotifyInterface implements ISpotifyInterface {
 	
 	private String accountsBase = "https://accounts.spotify.com/";
 	private String apiBase = "https://api.spotify.com/v1/";
@@ -42,7 +42,7 @@ public class SpotifyInterface {
 	private HttpClient client = HttpClient.newHttpClient();
 	private ObjectMapper mapper = new ObjectMapper();
 	
-	public SearchResponse Search(String queryString) throws IOException, InterruptedException, BadRequestException {
+	public SearchResponse search(String queryString) throws IOException, InterruptedException, BadRequestException {
 		if(auth.getToken() == null || auth.getExpiry() < Instant.now().getEpochSecond()) {
 			// access Token is null or expired
 			refreshAccessToken();

@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import org.junit.jupiter.api.Test;
 
 import com.waveform.generator.WaveformGenerator;
+import com.waveform.spotify.ISpotifyInterface;
 import com.waveform.spotify.SpotifyInterface;
 import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
 import com.waveform.spotify.models.search.SearchResponse;
@@ -28,14 +29,14 @@ import com.waveform.spotify.models.search.SearchResponse;
  */
 public class FullFlowTests {
 
-	SpotifyInterface spotify = new SpotifyInterface();
+	ISpotifyInterface spotify = new SpotifyInterface();
 	WaveformGenerator generator = new WaveformGenerator();
 	
 	@Test
 	public void TestWaveformGenerationFlow() {
 		assertDoesNotThrow(() -> {
 			String queryString = "the beatles yesterday";
-			SearchResponse search = spotify.Search(queryString);
+			SearchResponse search = spotify.search(queryString);
 
 			assertNotNull(search);
 			assertTrue(search.getTracks().getTotal() > 0);

@@ -29,14 +29,14 @@ import com.waveform.spotify.models.search.SearchResponse;
  */
 public class SpotifyInterfaceTests {
 	
-	SpotifyInterface spotify = new SpotifyInterface();
+	ISpotifyInterface spotify = new SpotifyInterface();
 	
 	@Test
 	public void TestSearch() throws IOException, InterruptedException, BadRequestException {
 		String queryString = "the beatles yesterday";
 		SearchResponse response;
 		try {
-			response = spotify.Search(queryString);
+			response = spotify.search(queryString);
 		} catch (IOException | InterruptedException e) {
 			throw e;
 		} catch (BadRequestException e) {
