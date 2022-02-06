@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The AnalysisBeat class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
  *	 A beat is the basic time unit of a piece of music; for example, each tick of a metronome. 
  *   Beats are typically multiples of tatums.

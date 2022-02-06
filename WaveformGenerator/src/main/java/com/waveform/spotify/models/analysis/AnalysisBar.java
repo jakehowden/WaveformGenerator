@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The AnalysisBar class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
  *	 A bar (or measure) is a segment of time defined as a given number of beats.
  * 

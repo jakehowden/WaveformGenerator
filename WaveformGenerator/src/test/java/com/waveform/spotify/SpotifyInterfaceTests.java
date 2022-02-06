@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 
 import com.waveform.spotify.models.analysis.TrackAnalysisResponse;
 import com.waveform.spotify.models.search.SearchResponse;
-import com.waveform.spotify.models.search.Tracks;
 
 /**
  * Unit tests for Spotify Interface.

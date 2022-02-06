@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * 
  *	 The AnalysisSection class is a model used in the deserialization
- *	 of a response from the Spotify track analysis API.
+ *	 of a response from the Spotify track analysis endpoint.
  *	 
  *	 A section is defined by large variations in rhythm or timbre, e.g. chorus, verse, bridge, guitar solo, etc. 
  *   A section also contains its own descriptions of tempo, key, mode, time_signature, and loudness.
