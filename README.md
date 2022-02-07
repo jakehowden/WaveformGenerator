@@ -19,7 +19,8 @@ The waveform generator has three steps to go from a track query to waveform imag
 # Setup
 The setup for the project is simple and only requires the setup of three environment variables.
 1. Setup a Spotify app here: https://developer.spotify.com/dashboard. Once the app is created a Client Id and Secret will be generated.
-  These are the first two environment variables needed. Set them as environment variables, named SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET respectively.
+  These are the first two environment variables needed. Set and name them SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET respectively 
+  wherever you plan on running this project.
 2. This project follows Spotify's Authorization Code Flow:
    
    ![AuthG_AuthoriztionCode](https://user-images.githubusercontent.com/47042397/152798439-c8098cac-3d51-4d08-8cae-a9d1370d9f88.png)
