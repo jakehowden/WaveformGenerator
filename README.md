@@ -16,6 +16,10 @@ The waveform generator has three steps to go from a track query to waveform imag
 3. Using the analysis of the track, we can work out the sound level at certain segments of the track. 
   These sound levels are mapped onto an image as mirrored rectangles which results in a waveform.
 
+Here is an example output:
+
+![saved](https://user-images.githubusercontent.com/47042397/153032544-54e4548d-1227-46af-890b-8a1b98a9ddd7.png)
+
 # Setup
 The setup for the project is simple and only requires the setup of three environment variables.
 1. Set up a Spotify app here: https://developer.spotify.com/dashboard. Once the app is created a Client Id and Secret will be generated.
